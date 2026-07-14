@@ -1,0 +1,86 @@
+/*************************************************
+ * RSVP BODA
+ * Corina & Jorge
+ *************************************************/
+
+const ID_HOJA = "19-KLhPniNzX9PDKHzAEU2PlvXShtHvkObWNaPptDDOw";
+
+const HOJA_INVITADOS = "Invitados";
+
+/*************************************************
+ * CARGAR APLICACIÓN
+ *************************************************/
+function doGet(e) {
+
+  const codigo = e.parameter.codigo || "";
+
+  const template = HtmlService.createTemplateFromFile("Index");
+
+  template.invitado = obtenerInvitado(codigo);
+  template.config = CONFIG;
+
+  return template
+    .evaluate()
+    .setTitle("RSVP | Corina & Jorge")
+    .setXFrameOptionsMode(HtmlService.XFrameOptionsMode.ALLOWALL);
+
+}
+
+/*************************************************
+ * INCLUIR ARCHIVOS HTML
+ *************************************************/
+function include(nombre){
+
+  return HtmlService
+    .createHtmlOutputFromFile(nombre)
+    .getContent();
+
+}
+
+/*************************************************
+ * BUSCAR INVITADO
+ *************************************************/
+function obtenerInvitado(codigo){
+
+  if(!codigo) return null;
+
+  const ss = SpreadsheetApp.openById(ID_HOJA);
+
+  const hoja = ss.getSheetByName(HOJA_INVITADOS);
+
+  const datos = hoja.getDataRange().getValues();
+
+  for(let i=1;i<datos.length;i++){
+
+    if(datos[i][0] == codigo){
+
+      const invitados=[];
+
+      for(let c=4;c<=8;c++){
+
+        if(datos[i][c]){
+
+          invitados.push(datos[i][c]);
+
+        }
+
+      }
+
+      return{
+
+        codigo:datos[i][0],
+        grupo:datos[i][1],
+        principal:datos[i][2],
+        lugares:Number(datos[i][3]),
+        invitados:invitados,
+        estado:datos[i][9]
+
+      };
+
+    }
+
+  }
+
+  return null;
+
+}
