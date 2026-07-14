@@ -1,0 +1,15 @@
+<script>
+
+function continuar(){
+
+    document
+        .getElementById("step1")
+        .classList.remove("active");
+
+    document
+        .getElementById("step2")
+        .classList.add("active");
+
+}
+
+</script>
