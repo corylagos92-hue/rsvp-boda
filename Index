@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+  <base target="_top">
+
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>RSVP</title>
+
+  <?!= include("Styles"); ?>
+
+</head>
+
+<body>
+
+<div class="overlay">
+
+    <!-- Flores -->
+    <img class="flores-superior"
+         src="<?= config.imagenes.floresSuperior ?>">
+
+    <!-- Sello -->
+    <img class="sello"
+         src="<?= config.imagenes.sello ?>">
+
+    <!-- Encabezado -->
+    <header class="hero">
+
+        <p class="subtitulo">
+            <?= config.novios.titulo ?>
+        </p>
+
+        <h1>
+
+            <?= config.novios.novia ?>
+
+            <span>&</span>
+
+            <?= config.novios.novio ?>
+
+        </h1>
+
+        <p class="fecha">
+
+            <?= config.novios.fecha ?>
+
+        </p>
+
+    </header>
+
+<? if(invitado){ ?>
+
+<div class="card">
+
+<!-- PASO 1 -->
+<div id="step1" class="step active">
+
+    <img
+      class="flores-esquina"
+      src="<?= config.imagenes.floresEsquina ?>">
+
+    <h2>
+
+        ¡Hola <?= invitado.principal ?>!
+
+    </h2>
+
+    <p class="mensaje">
+
+        Nos llena de alegría saber que podrías acompañarnos en uno de los días más importantes de nuestra vida.
+
+    </p>
+
+    <div class="lugares">
+
+        ❤️ <?= invitado.lugares ?> lugares reservados
+
+    </div>
+
+    <hr>
+
+    <h3>
+
+        Selecciona quiénes asistirán
+
+    </h3>
+
+   
+
+<!-- PASO 2 -->
+<div id="step2" class="step">
+
+    <h2>
+
+        🍽️ Menú
+
+    </h2>
+
+    <p>
+
+        Aquí aparecerán únicamente las personas que asistirán.
+
+    </p>
+
+</div>
+
+</div>
+
+<? for(let i=0;i<invitado.invitados.length;i++){ ?>
+
+<label class="persona">
+
+<input
+type="checkbox"
+checked>
+
+<span>
+
+<?= invitado.invitados[i] ?>
+
+</span>
+
+</label>
+
+<? } ?>
+
+    </div>
+
+<button class="btn">
+
+Continuar →
+
+</button>
+
+</div>
+
+<? } ?>
+
+<img
+class="monograma"
+src="<?= config.imagenes.monograma ?>">
+
+</div>
+
+<?!= include("Javascript"); ?>
+
+</body>
+
+</html>
