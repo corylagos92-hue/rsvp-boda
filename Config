@@ -1,0 +1,24 @@
+const CONFIG = {
+
+  novios:{
+    novia:"Corina",
+    novio:"Jorge",
+    titulo:"Celebramos nuestro amor",
+    fecha:"14 de Noviembre de 2026"
+  },
+
+  imagenes:{
+
+    fondo:"https://raw.githubusercontent.com/corylagos92-hue/rsvp-boda/main/assets/Fondo.jpg",
+
+    sello:"https://raw.githubusercontent.com/corylagos92-hue/rsvp-boda/main/assets/sello.png",
+
+    floresSuperior:"https://raw.githubusercontent.com/corylagos92-hue/rsvp-boda/main/assets/Flores-superior.png",
+
+    floresEsquina:"https://raw.githubusercontent.com/corylagos92-hue/rsvp-boda/main/assets/Flores-esquina.png",
+
+    monograma:"https://raw.githubusercontent.com/corylagos92-hue/rsvp-boda/main/assets/Monograma.png"
+
+  }
+
+};
